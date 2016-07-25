@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "rudolfochrist/ubuntu-desktop"
 
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
@@ -53,7 +53,7 @@ Vagrant.configure(2) do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-    vb.cpus = "2"
+    vb.cpus = "4"
     vb.memory = "4096"
   end
   #
