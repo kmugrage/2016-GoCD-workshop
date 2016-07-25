@@ -1,15 +1,22 @@
 #!/bin/bash
 
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+	# Set Up rbenv
+	git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+	cd ~/.rbenv && src/configure && make -C src
+	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+	~/.rbenv/bin/rbenv init
 
-cd ~/.rbenv && src/configure && make -C src
+	# Set up ruby-build
 
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+	git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+	~/.rbenv/bin/rbenv install 2.3.1
 
-~/.rbenv/bin/rbenv init
+	source ~/.bashrc
 
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+	~/.rbenv/bin/rbenv global 2.3.1
 
-source ~/.bashrc
+	# Install Rails
 
-~/.rbenv/bin/rbenv install 2.3.1
+
+	gem install rails
+

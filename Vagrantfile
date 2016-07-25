@@ -75,6 +75,9 @@ Vagrant.configure(2) do |config|
     sudo apt-get update
     sudo apt-get install -y apache2 php5 go-server go-agent git
 
+    # Will be needed by Ruby
+    sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
+
 
     if [ ! -f /etc/init.d/go-agent-2 ]; then
       echo "Installing agent 2"
