@@ -53,6 +53,7 @@ Vagrant.configure(2) do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
+    vb.cpus = "2"
     vb.memory = "4096"
   end
   #
@@ -73,11 +74,13 @@ Vagrant.configure(2) do |config|
     echo "deb https://download.go.cd /" | sudo tee /etc/apt/sources.list.d/gocd.list
     curl https://download.go.cd/GOCD-GPG-KEY.asc | sudo apt-key add -
     sudo apt-get update
-    sudo apt-get install -y apache2 php5 go-server go-agent git
 
     # Will be needed by Ruby
-    sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
+    sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev git
+    
 
+    # Install and set up GoCD server and agents
+    sudo apt-get install -y go-server go-agent
 
     if [ ! -f /etc/init.d/go-agent-2 ]; then
       echo "Installing agent 2"
@@ -112,4 +115,5 @@ Vagrant.configure(2) do |config|
     sudo -u go /etc/init.d/go-agent-3 start
 
   SHELL
+
 end
