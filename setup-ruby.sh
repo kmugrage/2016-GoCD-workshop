@@ -28,4 +28,5 @@
 
 
 	gem install rails
+	gem install rake
 

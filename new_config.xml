@@ -8,8 +8,5 @@
   </config-repos>
   <pipelines group="Development" />
   <pipelines group="Operations" />
-  <agents>
-    <agent hostname="vagrant-ubuntu-trusty-64" ipaddress="10.0.2.15" uuid="798a52ea-dbc4-49f8-9750-c04bebb30f38" />
-  </agents>
 </cruise>
 
