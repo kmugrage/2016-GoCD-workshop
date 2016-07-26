@@ -112,11 +112,12 @@ Vagrant.configure(2) do |config|
       ln -s /etc/init.d/go-agent-3 /etc/rc2.d/S99go-agent-3
     fi
 
+    # install the yaml config plugin
     cp /vagrant/yaml-config-plugin-0.1.0.jar /var/lib/go-server/plugins/external/
     chown go:go /var/lib/go-server/plugins/external/yaml-config-plugin-0.1.0.jar
 
     # Lower the polling interval - WAY too low for a real server, don't do this!
-    echo export GO_SERVER_SYSTEM_PROPERTIES=\'-Dmaterial.update.idle.interval=2000 -Dcruise.material.update.interval=2000\' | sudo tee -a /etc/default/go-server
+    /bin/bash /vagrant/update_go-server.sh
 
 
     # Replace the default config file with ours
