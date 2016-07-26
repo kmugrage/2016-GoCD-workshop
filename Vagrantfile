@@ -119,7 +119,9 @@ Vagrant.configure(2) do |config|
     cp /vagrant/yaml-config-plugin-0.1.0.jar /var/lib/go-server/plugins/external/
     chown go:go /var/lib/go-server/plugins/external/yaml-config-plugin-0.1.0.jar
 
-    sudo -u go /etc/init.d/go-server stop
+    /etc/init.d/go-server stop
+    /bin/bash /vagrant/update_config.sh
+
     sudo -u go /etc/init.d/go-server start
 
     sudo -u go /etc/init.d/gocd-golang-agent start

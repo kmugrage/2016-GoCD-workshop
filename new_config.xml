@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="82">
+  <server artifactsdir="artifacts" commandRepositoryLocation="default" serverId="f4738759-96d8-4191-a07b-7d17c76a42b1" />
+  <config-repos>
+    <config-repo plugin="yaml.config.plugin">
+      <git url="/vagrant/yaml-gocd-test" />
+    </config-repo>
+  </config-repos>
+  <pipelines group="Development" />
+  <pipelines group="Operations" />
+  <agents>
+    <agent hostname="vagrant-ubuntu-trusty-64" ipaddress="10.0.2.15" uuid="798a52ea-dbc4-49f8-9750-c04bebb30f38" />
+  </agents>
+</cruise>
+
