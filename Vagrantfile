@@ -71,9 +71,20 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
+    
+    # Add GoCD official
     echo "deb https://download.go.cd /" | sudo tee /etc/apt/sources.list.d/gocd.list
     curl https://download.go.cd/GOCD-GPG-KEY.asc | sudo apt-key add -
     sudo apt-get update
+
+    # Add GoCD GoLang Agent
+    # Add Bintray's GPG key:
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61 
+    # Add repo
+    sudo echo deb https://dl.bintray.com/alex-hal9000/gocd-golang-agent master main | sudo tee -a /etc/apt/sources.list
+    sudo apt-get update
+    # Install the package  (add '-y --force-yes' after 'install' if automating)
+    sudo apt-get install -y --force-yes gocd-golang-agent
 
     # Will be needed by Ruby
     sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev git
@@ -81,28 +92,28 @@ Vagrant.configure(2) do |config|
 
     # Install and set up GoCD server and agents
     sudo apt-get install -y openjdk-8-jdk
-    sudo apt-get install -y go-server go-agent
+    sudo apt-get install -y go-server
 
-    if [ ! -f /etc/init.d/go-agent-2 ]; then
+    if [ ! -f /etc/init.d/gocd-golang-agent-2 ]; then
       echo "Installing agent 2"
-      ln -s /etc/init.d/go-agent /etc/init.d/go-agent-2
-      ln -s /usr/share/go-agent /usr/share/go-agent-2
-      cp /etc/default/go-agent /etc/default/go-agent-2
-      mkdir /var/{lib,log}/go-agent-2
-      chown go:go /var/{lib,log}/go-agent-2
+      ln -s /etc/init.d/gocd-golang-agent /etc/init.d/gocd-golang-agent-2
+      ln -s /usr/share/gocd-golang-agent /usr/share/gocd-golang-agent-2
+      cp /etc/default/gocd-golang-agent /etc/default/gocd-golang-agent-2
+      mkdir /var/{lib,log}/gocd-golang-agent-2
+      chown go:go /var/{lib,log}/gocd-golang-agent-2
 
-      ln -s /etc/init.d/go-agent-2 /etc/rc2.d/S99go-agent-2
+      ln -s /etc/init.d/gocd-golang-agent-2 /etc/rc2.d/S99gocd-golang-agent-2
     fi
 
-    if [ ! -f /etc/init.d/go-agent-3 ]; then
+    if [ ! -f /etc/init.d/gocd-golang-agent-3 ]; then
       echo "Installing agent 3"
-      ln -s /etc/init.d/go-agent /etc/init.d/go-agent-3
-      ln -s /usr/share/go-agent /usr/share/go-agent-3
-      cp /etc/default/go-agent /etc/default/go-agent-3
-      mkdir /var/{lib,log}/go-agent-3
-      chown go:go /var/{lib,log}/go-agent-3
+      ln -s /etc/init.d/gocd-golang-agent /etc/init.d/gocd-golang-agent-3
+      ln -s /usr/share/gocd-golang-agent /usr/share/gocd-golang-agent-3
+      cp /etc/default/gocd-golang-agent /etc/default/gocd-golang-agent-3
+      mkdir /var/{lib,log}/gocd-golang-agent-3
+      chown go:go /var/{lib,log}/gocd-golang-agent-3
 
-      ln -s /etc/init.d/go-agent-3 /etc/rc2.d/S99go-agent-3
+      ln -s /etc/init.d/gocd-golang-agent-3 /etc/rc2.d/S99gocd-golang-agent-3
     fi
 
     cp /vagrant/yaml-config-plugin-0.1.0.jar /var/lib/go-server/plugins/external/
@@ -111,9 +122,9 @@ Vagrant.configure(2) do |config|
     sudo -u go /etc/init.d/go-server stop
     sudo -u go /etc/init.d/go-server start
 
-    sudo -u go /etc/init.d/go-agent start
-    sudo -u go /etc/init.d/go-agent-2 start
-    sudo -u go /etc/init.d/go-agent-3 start
+    sudo -u go /etc/init.d/gocd-golang-agent start
+    sudo -u go /etc/init.d/gocd-golang-agent-2 start
+    sudo -u go /etc/init.d/gocd-golang-agent-3 start
 
   SHELL
 
