@@ -53,8 +53,8 @@ Vagrant.configure(2) do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-    vb.cpus = "2"
-    vb.memory = "4096"
+    vb.cpus = "4"
+    vb.memory = "8192"
   end
   #
   # View the documentation for the provider you are using for more
@@ -80,16 +80,17 @@ Vagrant.configure(2) do |config|
     # Will be needed by Ruby
     sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev git
 
-    sudo apt-get install -y ruby-full rails rake
+    sudo apt-get install -y ruby rails rake
     
 
     # Install and set up GoCD server and agents
-    sudo apt-get install -y openjdk-8-jdk
+    sudo apt-get install -y openjdk-7-jre
     sudo apt-get install -y go-server go-agent
 
     # Stop GoCD
     sudo /etc/init.d/go-server stop
 
+    # Add more GoCD agents
     if [ ! -f /etc/init.d/go-agent-2 ]; then
       echo "Installing agent 2"
       ln -s /etc/init.d/go-agent /etc/init.d/go-agent-2
@@ -118,7 +119,6 @@ Vagrant.configure(2) do |config|
 
     # Lower the polling interval - WAY too low for a real server, don't do this!
     /bin/bash /vagrant/update_go-server.sh
-
 
     # Replace the default config file with ours
     /bin/bash /vagrant/update_config.sh
