@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision "shell", inline: <<-SHELL
-    
+
     # Add GoCD official
     echo "deb https://download.go.cd /" | sudo tee /etc/apt/sources.list.d/gocd.list
     curl https://download.go.cd/GOCD-GPG-KEY.asc | sudo apt-key add -
@@ -26,16 +26,40 @@ Vagrant.configure(2) do |config|
 
     # Will be needed by Ruby
     sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev git
-
     sudo apt-get install -y ruby rails rake
-    
+
+    # # Set up Gitolite
+    # sudo ssh-keygen -t rsa -b 4096 -f /home/vagrant/.ssh/id_rsa -N ""
+    # sudo chown vagrant:vagrant /home/vagrant/.ssh/id_rsa*
+    # sudo cp /home/vagrant/.ssh/id_rsa.pub /tmp/admin.pub
+    #
+    # sudo apt-get -y install gitolite
+    # sudo adduser --system --group --shell /bin/bash --disabled-password git
+    # sudo -i -u git gl-setup -q /tmp/admin.pub
+    #
+    # # Force us to know about ourselves so the git clone doesn't fail
+    # sudo -i -u vagrant ssh-keyscan -H localhost >> /home/vagrant/.ssh/known_hosts
+    #
+    # # Clone the admin repo to the Vagrant user
+    # sudo -i -u vagrant git clone git@localhost:gitolite-admin
+
+    # Set up a key for the GoCD user
+    # For some reason using -i -u go doesn't work with the blank passphrase
+    # sudo ssh-keygen -t rsa -b 4096 -f /var/go/.ssh/id_rsa -N ""
+    # sudo chown -R go:go /var/go/.ssh
+    #
+    # sudo cp /var/go/.ssh/id_rsa.pub
+
 
     # Install and set up GoCD server and agents
-    sudo apt-get install -y openjdk-7-jre
+    sudo apt-get install -y openjdk-7-jdk
     sudo apt-get install -y go-server go-agent
 
     # Stop GoCD
     sudo /etc/init.d/go-server stop
+
+    # Get our GoCD YAML repository
+    sudo -i -u go git clone https://github.com/kmugrage/yaml-gocd-test.git
 
     # Add more GoCD agents
     if [ ! -f /etc/init.d/go-agent-2 ]; then
