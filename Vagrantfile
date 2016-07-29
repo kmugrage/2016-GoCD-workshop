@@ -24,13 +24,8 @@ Vagrant.configure(2) do |config|
     curl https://download.go.cd/GOCD-GPG-KEY.asc | sudo apt-key add -
     sudo apt-get update
 
-    # Will be needed by Ruby
-    sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev git
-    sudo apt-get install -y ruby rails rake
-
-
     # Install and set up GoCD server and agents
-    sudo apt-get install -y openjdk-7-jdk
+    sudo apt-get install -y openjdk-7-jdk git
     sudo apt-get install -y go-server go-agent
 
     # Stop GoCD
