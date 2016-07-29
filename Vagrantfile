@@ -28,28 +28,6 @@ Vagrant.configure(2) do |config|
     sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev git
     sudo apt-get install -y ruby rails rake
 
-    # # Set up Gitolite
-    # sudo ssh-keygen -t rsa -b 4096 -f /home/vagrant/.ssh/id_rsa -N ""
-    # sudo chown vagrant:vagrant /home/vagrant/.ssh/id_rsa*
-    # sudo cp /home/vagrant/.ssh/id_rsa.pub /tmp/admin.pub
-    #
-    # sudo apt-get -y install gitolite
-    # sudo adduser --system --group --shell /bin/bash --disabled-password git
-    # sudo -i -u git gl-setup -q /tmp/admin.pub
-    #
-    # # Force us to know about ourselves so the git clone doesn't fail
-    # sudo -i -u vagrant ssh-keyscan -H localhost >> /home/vagrant/.ssh/known_hosts
-    #
-    # # Clone the admin repo to the Vagrant user
-    # sudo -i -u vagrant git clone git@localhost:gitolite-admin
-
-    # Set up a key for the GoCD user
-    # For some reason using -i -u go doesn't work with the blank passphrase
-    # sudo ssh-keygen -t rsa -b 4096 -f /var/go/.ssh/id_rsa -N ""
-    # sudo chown -R go:go /var/go/.ssh
-    #
-    # sudo cp /var/go/.ssh/id_rsa.pub
-
 
     # Install and set up GoCD server and agents
     sudo apt-get install -y openjdk-7-jdk
@@ -59,29 +37,31 @@ Vagrant.configure(2) do |config|
     sudo /etc/init.d/go-server stop
 
     # Get our GoCD YAML repository
-    sudo -i -u go git clone https://github.com/kmugrage/yaml-gocd-test.git
+    # sudo -i -u go git clone https://github.com/kmugrage/yaml-gocd-test.git
 
-    # Add more GoCD agents
+    Add more GoCD agents
     if [ ! -f /etc/init.d/go-agent-2 ]; then
       echo "Installing agent 2"
-      ln -s /etc/init.d/go-agent /etc/init.d/go-agent-2
+      cp /etc/init.d/go-agent /etc/init.d/go-agent-2
+      sed -i 's/# Provides: go-agent$/# Provides: go-agent-2/g' /etc/init.d/go-agent-2
       ln -s /usr/share/go-agent /usr/share/go-agent-2
-      cp /etc/default/go-agent /etc/default/go-agent-2
+      cp -p /etc/default/go-agent /etc/default/go-agent-2
       mkdir /var/{lib,log}/go-agent-2
       chown go:go /var/{lib,log}/go-agent-2
 
-      ln -s /etc/init.d/go-agent-2 /etc/rc2.d/S99go-agent-2
+      update-rc.d go-agent-2 defaults
     fi
 
     if [ ! -f /etc/init.d/go-agent-3 ]; then
       echo "Installing agent 3"
-      ln -s /etc/init.d/go-agent /etc/init.d/go-agent-3
+      cp /etc/init.d/go-agent /etc/init.d/go-agent-3
+      sed -i 's/# Provides: go-agent$/# Provides: go-agent-3/g' /etc/init.d/go-agent-3
       ln -s /usr/share/go-agent /usr/share/go-agent-3
-      cp /etc/default/go-agent /etc/default/go-agent-3
+      cp -p /etc/default/go-agent /etc/default/go-agent-3
       mkdir /var/{lib,log}/go-agent-3
       chown go:go /var/{lib,log}/go-agent-3
 
-      ln -s /etc/init.d/go-agent-3 /etc/rc2.d/S99go-agent-3
+      update-rc.d go-agent-3 defaults
     fi
 
     # install the yaml config plugin
