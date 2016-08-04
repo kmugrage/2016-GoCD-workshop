@@ -3,10 +3,10 @@
   <server artifactsdir="artifacts" commandRepositoryLocation="default" serverId="f4738759-96d8-4191-a07b-7d17c76a42b1" />
   <config-repos>
     <config-repo plugin="yaml.config.plugin">
-      <git url="https://github.com/gocd-demo/2016-workshop.git" />
+      <git url="https://github.com/gocd-demo/2016-GoCD-workshop-application.git" />
     </config-repo>
     <config-repo plugin="yaml.config.plugin">
-      <git url="https://github.com/gocd-demo/2016-workshop-security.git" />
+      <git url="https://github.com/gocd-demo/2016-GoCD-workshop-security.git" />
     </config-repo>
   </config-repos>
   <pipelines group="Development" />
