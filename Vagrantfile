@@ -31,6 +31,12 @@ Vagrant.configure(2) do |config|
     # Stop GoCD
     sudo /etc/init.d/go-server stop
 
+    # This will be needed by rbenv and Ruby
+    sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
+
+    # echo "running rbenv - this will take a couple minutes"
+    # sudo -i -u go /vagrant/confgure_rbenv.sh
+
     # Get our GoCD YAML repository
     # sudo -i -u go git clone https://github.com/kmugrage/yaml-gocd-test.git
 
@@ -70,11 +76,11 @@ Vagrant.configure(2) do |config|
     /bin/bash /vagrant/update_config.sh
 
     # Start the server
-    sudo -u go /etc/init.d/go-server start
+    sudo /etc/init.d/go-server start
 
-    sudo -u go /etc/init.d/go-agent start
-    sudo -u go /etc/init.d/go-agent-2 start
-    sudo -u go /etc/init.d/go-agent-3 start
+    sudo /etc/init.d/go-agent start
+    sudo /etc/init.d/go-agent-2 start
+    sudo /etc/init.d/go-agent-3 start
 
     # Remove packages no longer needed
     sudo apt-get -y autoremove
