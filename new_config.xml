@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="82">
   <server artifactsdir="artifacts" commandRepositoryLocation="default" serverId="f4738759-96d8-4191-a07b-7d17c76a42b1" />
-  <config-repos>
-    <config-repo plugin="yaml.config.plugin">
-      <git url="https://github.com/gocd-demo/2016-GoCD-workshop-application.git" />
-    </config-repo>
-    <config-repo plugin="yaml.config.plugin">
-      <git url="https://github.com/gocd-demo/2016-GoCD-workshop-security.git" />
-    </config-repo>
-  </config-repos>
-  <pipelines group="Development" />
-  <pipelines group="Operations" />
 </cruise>
