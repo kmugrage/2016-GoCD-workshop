@@ -1,6 +1,6 @@
 # 2016-GoCD-workshop
 
-Use this to create and run a Virtualbox to be used for the GoCD Workshop.
+Use this to create and run a GoCD server to be used for the GoCD Workshop.
 
 ## Using Digital Ocean (recommended to avoid local machine issues and bandwidth issues)
 
@@ -10,7 +10,7 @@ Requires Vagrant and a Digital Ocean account
 
 ### Set Up SSH keys
 
-1. Create an SSH key on your local system
+1. If you don't have an SSH key on your system, create one.
 2. Go to https://cloud.digitalocean.com/settings/security and click Add SSH key
 3. Copy and paste the public key, name it 'GoCD Workshop' (case sensitive)
 
