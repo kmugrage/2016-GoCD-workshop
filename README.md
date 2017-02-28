@@ -4,7 +4,7 @@ Use this to create and run a GoCD server to be used for the GoCD Workshop.
 
 ## Using Digital Ocean (recommended to avoid local machine issues and bandwidth issues)
 
-Requires Vagrant and a Digital Ocean account
+Requires Vagrant and a Digital Ocean account. This uses a 2GB Digital Ocean Droplet. At the time of this writing, the cost of this droplet size is $20 a month / $0.030 per hour. 
 
 1. Clone this repository
 
