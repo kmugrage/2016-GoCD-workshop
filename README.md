@@ -8,7 +8,7 @@ Requires Vagrant and a Digital Ocean account
 
 1. Clone this repository
 2. Go to https://cloud.digitalocean.com/settings/api/tokens and click on Generate New Token
-3. We don't want to store your new token in a file that could accidentally get added to Git, so create an environment variable on your system called DIGITAL_OCEAN_KEY ( (Mac)[http://osxdaily.com/2015/07/28/set-enviornment-variables-mac-os-x/] )
+3. We don't want to store your new token in a file that could accidentally get added to Git, so create an environment variable on your system called DIGITAL_OCEAN_KEY ( [Mac](http://osxdaily.com/2015/07/28/set-enviornment-variables-mac-os-x/) - [Ubuntu](https://help.ubuntu.com/community/EnvironmentVariables) ) (Note: if someone has a good tutorial for setting in Windows please let me know.
 
 ## Using Virtualbox for local installation
 
