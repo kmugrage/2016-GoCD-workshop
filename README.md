@@ -29,7 +29,7 @@ Requires Vagrant and a Digital Ocean account
 Requires Vagrant and Virtualbox
 
 1. Clone this repository
-2. Rename Vagrantfile.virtaulbox to Vagrantfile
+2. Rename Vagrantfile.virtualbox to Vagrantfile
 3. Run 'vagrant up' (this will take a while, it builds most of the box)
 
 The GoCD instance will be set to poll https://github.com/gocd-demo/2016-GoCD-workshop-application for pipeline changes.
