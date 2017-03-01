@@ -12,9 +12,13 @@ Requires [Vagrant](https://www.vagrantup.com/), [Git](https://git-scm.com/) and 
 
 #### Set Up SSH keys
 
+This will allow Vagrant to provision the new machine, as well as allow you to connect to it more easily.
+
 1. [Click here for SSH key instructions](basic.md)
 
 #### Set Up API Token
+
+This will allow Vagrant to create machines on your behalf.
 
 1. Go to https://cloud.digitalocean.com/settings/api/tokens and click on Generate New Token
 2. Copy the token and save it to a safe place. __Anyone with this token can create droplets on your Digital Ocean account.__
