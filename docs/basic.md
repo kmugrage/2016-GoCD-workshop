@@ -69,6 +69,7 @@ hmznEsKzEwEEahAfR1kYnphM1j+ez8A1qsmKMsVmXe7epgMcfFOFvHvNYuifRv/XnDCA/sFWOvO
 sample@ubuntu-xenial:~$
 ```
 
+
 2. Copy the entire string.
 
 3. Navigate to [https://cloud.digitalocean.com/settings/security](https://cloud.digitalocean.com/settings/security)
