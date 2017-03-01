@@ -1,6 +1,6 @@
 # GoCD Workshop Setup
 
-This instructions will set up a GoCD server and 3 GoCD agents to be used for the GoCD Workshop. There are two options below, Digital Ocean in the cloud or Virtualbox on your local machine. Either option requires Vagrant, a tool which will help us set up the machine.
+This instructions will set up a GoCD server and 3 GoCD agents to be used for the GoCD Workshop. There are two options below, Digital Ocean in the cloud or Virtualbox on your local machine. Either option requires [Vagrant](https://www.vagrantup.com/), [Git](https://git-scm.com/), and SSH.
 
 ## Setting Up
 
@@ -21,7 +21,7 @@ This will allow Vagrant to provision the new machine, as well as allow you to co
 This will allow Vagrant to create machines on your behalf.
 
 1. Go to [https://cloud.digitalocean.com/settings/api/tokens](https://cloud.digitalocean.com/settings/api/tokens) and click on Generate New Token
-2. Copy the token and save it to a safe place. __Anyone with this token can create droplets on your Digital Ocean account.__
+2. Copy the token and save it to a safe place like an encrypted password store. You'll need it later, and Digital Ocean won't show it to you again. __Anyone with this token can create droplets on your Digital Ocean account.__
 3. In a terminal, type `DIGITAL_OCEAN_KEY=[YOUR_KEY]`. For example, if your token is '123456789' you'll type `DIGITAL_OCEAN_KEY=123456789`
   * Note: typing this into the terminal this way will set that value as an environment variable for as long as this terminal is active. It will not work in any other terminals you launch or after you close the one you're using now. If you'd like this key to be persistent you'll need to add an [environment variable](https://en.wikipedia.org/wiki/Environment_variable) to your system.
 4. Rename Vagrantfile.digitalocean to Vagrantfile by typing `mv Vagrantfile.digitalocean Vagrantfile` in your terminal.
