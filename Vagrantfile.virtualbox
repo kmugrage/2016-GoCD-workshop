@@ -3,13 +3,12 @@
 
 Vagrant.configure(2) do |config|
 
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/xenial64"
 
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
   end
 
-  config.vm.network "forwarded_port", guest: 80, host: 8888
   config.vm.network "forwarded_port", guest: 8153, host: 8153
 
   config.vm.provider "virtualbox" do |vb|
@@ -20,16 +19,22 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
 
     # Add GoCD official
-    echo "deb https://download.go.cd /" | sudo tee /etc/apt/sources.list.d/gocd.list
-    curl https://download.go.cd/GOCD-GPG-KEY.asc | sudo apt-key add -
-    sudo apt-get update
+    echo "deb https://download.gocd.io /" | tee /etc/apt/sources.list.d/gocd.list
+    curl https://download.gocd.io/GOCD-GPG-KEY.asc | apt-key add -
+    apt-get update
 
     # Install and set up GoCD server and agents
-    sudo apt-get install -y openjdk-7-jdk git
+    apt-get install -y openjdk-8-jre git
     sudo apt-get install -y go-server go-agent
 
     # Stop GoCD
     sudo /etc/init.d/go-server stop
+
+    # This will be needed by rbenv and Ruby
+    sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
+
+    # echo "running rbenv - this will take a couple minutes"
+    # sudo -i -u go /vagrant/confgure_rbenv.sh
 
     # Get our GoCD YAML repository
     # sudo -i -u go git clone https://github.com/kmugrage/yaml-gocd-test.git
@@ -59,9 +64,10 @@ Vagrant.configure(2) do |config|
       update-rc.d go-agent-3 defaults
     fi
 
+
     # install the yaml config plugin
-    cp /vagrant/yaml-config-plugin-0.1.0.jar /var/lib/go-server/plugins/external/
-    chown go:go /var/lib/go-server/plugins/external/yaml-config-plugin-0.1.0.jar
+    wget https://github.com/tomzo/gocd-yaml-config-plugin/releases/download/0.4.0/yaml-config-plugin-0.4.0.jar
+    mv yaml-config-plugin-0.4.0.jar /var/lib/go-server/plugins/external/
 
     # Lower the polling interval - WAY too low for a real server, don't do this!
     /bin/bash /vagrant/update_go-server.sh
@@ -70,14 +76,14 @@ Vagrant.configure(2) do |config|
     /bin/bash /vagrant/update_config.sh
 
     # Start the server
-    sudo -u go /etc/init.d/go-server start
+    /etc/init.d/go-server start
 
-    sudo -u go /etc/init.d/go-agent start
-    sudo -u go /etc/init.d/go-agent-2 start
-    sudo -u go /etc/init.d/go-agent-3 start
+    /etc/init.d/go-agent start
+    /etc/init.d/go-agent-2 start
+    /etc/init.d/go-agent-3 start
 
     # Remove packages no longer needed
-    sudo apt-get -y autoremove
+    apt-get -y autoremove
 
   SHELL
 

@@ -1,2 +1,7 @@
+.env
 .vagrant
+*.log
 scratch
+workshop-application
+workshop-security
+Vagrantfile
