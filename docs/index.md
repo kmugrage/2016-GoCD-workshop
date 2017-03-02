@@ -4,6 +4,12 @@ This instructions will set up a GoCD server and 3 GoCD agents to be used for the
 
 ## Instructions
 
+### Important notes
+
+* Text that is shown `in a white box` represents commands to be typed into a terminal. These are almost always case sensitive. This is done primarily so that you don't have add your private information to the setup scripts.
+* Text in `[SQUARE BRACES]` represents text you'll need to replace with the appropriate values for your account.
+* At this time, these instructions are not valid for Windows.
+
 ### Required setup for either option
 
 * Install [Vagrant](https://www.vagrantup.com/)
