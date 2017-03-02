@@ -6,10 +6,10 @@ This instructions will set up a GoCD server and 3 GoCD agents to be used for the
 
 ### Required setup for either option
 
-1. Install [Vagrant](https://www.vagrantup.com/)
-2. Install [Git](https://git-scm.com/)
-3. You'll need SSH, no link provided as there are many distributions and most operating systems already have it.
-4. Clone the repository at [https://github.com/gocd-demo/GoCD-workshop-setup](https://github.com/gocd-demo/GoCD-workshop-setup) by typing
+* Install [Vagrant](https://www.vagrantup.com/)
+* Install [Git](https://git-scm.com/)
+* You'll need SSH, no link provided as there are many distributions and most operating systems already have it.
+* Clone the repository at [https://github.com/gocd-demo/GoCD-workshop-setup](https://github.com/gocd-demo/GoCD-workshop-setup) by typing
 
   `git clone https://github.com/gocd-demo/GoCD-workshop-setup`
 
@@ -23,15 +23,15 @@ This uses a 2GB Digital Ocean Droplet. __At the time of this writing, the cost o
 
 This will allow Vagrant to provision the new machine, as well as allow you to connect to it more easily.
 
-1. [Click here for SSH key instructions](basic.md)
+* [Click here for SSH key instructions](basic.md)
 
 #### Set Up API Token
 
 This will allow Vagrant to create machines on your behalf.
 
-1. Go to [https://cloud.digitalocean.com/settings/api/tokens](https://cloud.digitalocean.com/settings/api/tokens) and click on Generate New Token
-2. Copy the token and save it to a safe place like an encrypted password store. You'll need it later, and Digital Ocean won't show it to you again. __Anyone with this token can create droplets on your Digital Ocean account.__
-3. In a terminal, type
+* Go to [https://cloud.digitalocean.com/settings/api/tokens](https://cloud.digitalocean.com/settings/api/tokens) and click on Generate New Token
+* Copy the token and save it to a safe place like an encrypted password store. You'll need it later, and Digital Ocean won't show it to you again. __Anyone with this token can create droplets on your Digital Ocean account.__
+* In a terminal, type
 
   `export DIGITAL_OCEAN_KEY='[YOUR_KEY]'`
 
@@ -41,27 +41,27 @@ This will allow Vagrant to create machines on your behalf.
 
 #### Start the machine
 
-1. If you're not already, change directory to the Git repository you checked out earlier. Eg: `cd GoCD-workshop-setup`
+* If you're not already, change directory to the Git repository you checked out earlier. Eg: `cd GoCD-workshop-setup`
 
-2. Rename Vagrantfile.digitalocean to Vagrantfile by typing
+* Rename Vagrantfile.digitalocean to Vagrantfile by typing
 
   `mv Vagrantfile.digitalocean Vagrantfile`
 
   in your terminal.
 
-3. Type `vagrant up` in your terminal.
+* Type `vagrant up` in your terminal.
 
-4. When complete, use your web browser to go to [https://cloud.digitalocean.com/droplets](https://cloud.digitalocean.com/droplets)
+* When complete, use your web browser to go to [https://cloud.digitalocean.com/droplets](https://cloud.digitalocean.com/droplets)
 
-5. Copy the IP address of your new machine.
+* Copy the IP address of your new machine.
 
-6. Go to http://[YOUR_IP_ADDRESS]:8153/ in a web browser. For example, http://192.168.0.1:8153/
+* Go to http://[YOUR_IP_ADDRESS]:8153/ in a web browser. For example, http://192.168.0.1:8153/
 
 ### Option 2: Using Virtualbox for local installation
 
 Requires Vagrant and Virtualbox
 
-1. Clone this repository
-2. Rename Vagrantfile.virtualbox to Vagrantfile
-3. Run 'vagrant up' (this will take a while, it builds most of the box)
-4. Go to http://localhost:8153/
+* Clone this repository
+* Rename Vagrantfile.virtualbox to Vagrantfile
+* Run 'vagrant up' (this will take a while, it builds most of the box)
+* Go to http://localhost:8153/
