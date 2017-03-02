@@ -39,20 +39,23 @@ This will allow Vagrant to create machines on your behalf.
 
   * Note: typing this into the terminal this way will set that value as an environment variable for as long as this terminal is active. It will not work in any other terminals you launch or after you close the one you're using now. If you'd like this key to be persistent you'll need to add an [environment variable](https://en.wikipedia.org/wiki/Environment_variable) to your system.
 
+#### Start the machine
 
-4. Rename Vagrantfile.digitalocean to Vagrantfile by typing
+1. If you're not already, change directory to the Git repository you checked out earlier. Eg: `cd GoCD-workshop-setup`
+
+2. Rename Vagrantfile.digitalocean to Vagrantfile by typing
 
   `mv Vagrantfile.digitalocean Vagrantfile`
 
   in your terminal.
 
-5. Type `vagrant up` in your terminal.
+3. Type `vagrant up` in your terminal.
 
-6. When complete, use your web browser to go to [https://cloud.digitalocean.com/droplets](https://cloud.digitalocean.com/droplets)
+4. When complete, use your web browser to go to [https://cloud.digitalocean.com/droplets](https://cloud.digitalocean.com/droplets)
 
-7. Copy the IP address of your new machine.
+5. Copy the IP address of your new machine.
 
-8. Go to http://[YOUR_IP_ADDRESS]:8153/ in a web browser. For example, http://192.168.0.1:8153/
+6. Go to http://[YOUR_IP_ADDRESS]:8153/ in a web browser. For example, http://192.168.0.1:8153/
 
 ### Option 2: Using Virtualbox for local installation
 
