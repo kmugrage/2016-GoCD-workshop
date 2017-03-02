@@ -43,11 +43,13 @@ This will allow Vagrant to create machines on your behalf.
 
 * If you're not already, change directory to the Git repository you checked out earlier. Eg: `cd GoCD-workshop-setup`
 
-* Rename Vagrantfile.digitalocean to Vagrantfile by typing
+* Install the Vagrant plugin for Digital Ocean
+
+  `vagrant plugin install vagrant-digitalocean`
+
+* Rename Vagrantfile.digitalocean to Vagrantfile
 
   `mv Vagrantfile.digitalocean Vagrantfile`
-
-  in your terminal.
 
 * Type `vagrant up` in your terminal.
 
