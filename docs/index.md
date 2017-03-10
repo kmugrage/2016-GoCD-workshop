@@ -64,6 +64,7 @@ This will allow Vagrant to create machines on your behalf.
 * Copy the IP address of your new machine.
 
 * Go to http://[YOUR_IP_ADDRESS]:8153/ in a web browser. For example, http://192.168.0.1:8153/
+  * Note: It may be several minutes before GoCD is available.
 
 ### Option 2: Using Virtualbox for local installation
 
