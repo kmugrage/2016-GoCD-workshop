@@ -83,7 +83,7 @@ Con:
 
 Requires Vagrant and Virtualbox
 
-* Clone this repository
-* Rename Vagrantfile.virtualbox to Vagrantfile
-* Run 'vagrant up' (this will take a while, it builds most of the box)
-* Go to http://localhost:8153/
+1. Clone this repository
+2. Rename Vagrantfile.virtualbox to Vagrantfile
+3. Run 'vagrant up' (this will take a while, it builds most of the box)
+4. Go to http://localhost:8153/
