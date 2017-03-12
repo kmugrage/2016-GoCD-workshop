@@ -68,6 +68,19 @@ This will allow Vagrant to create machines on your behalf.
 
 ### Option 2: Using Virtualbox for local installation
 
+This method will install set up a virtual machine on your computer with a GoCD server and agents.
+
+Pro:
+
+* You don't need a Digital Ocean account
+* There's no cost to you to run the machine
+* Your environment is available offline
+
+Con:
+
+* This option is __much__ slower to set up on most networks since everything is being downloaded to your machine
+* This option requires a minimum of 8GB of ram on the local machine, and more is recommended
+
 Requires Vagrant and Virtualbox
 
 * Clone this repository
