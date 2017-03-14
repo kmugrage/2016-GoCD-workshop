@@ -1,7 +1,9 @@
 .env
+.talismanignore
 .vagrant
 *.log
 scratch
 workshop-application
 workshop-security
 Vagrantfile
+*.DS_Store
