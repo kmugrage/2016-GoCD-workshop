@@ -1,5 +1,6 @@
 #!/bin/bash
 
+/bin/echo "Creating swap file"
 # Show free memory
 free
 

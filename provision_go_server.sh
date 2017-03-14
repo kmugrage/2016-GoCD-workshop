@@ -5,15 +5,17 @@
   curl -# https://download.gocd.io/GOCD-GPG-KEY.asc | apt-key add -
   apt-get update
 
-  # Install and set up GoCD server and agents
+  # This will be needed by rbenv and Ruby
+  apt-get install -y libssl-dev libreadline-dev zlib1g-dev
+
+  # Install and set up GoCD server, agents and requirements
   apt-get install -y openjdk-8-jre git
-  sudo apt-get install -y go-server go-agent
+  apt-get install -y go-server go-agent
 
   # Stop GoCD
   # sudo /etc/init.d/go-server stop
 
-  # This will be needed by rbenv and Ruby
-  sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
+
 
   # echo "running rbenv - this will take a couple minutes"
   # sudo -i -u go /vagrant/confgure_rbenv.sh
@@ -52,12 +54,14 @@
   # mv yaml-config-plugin-0.4.0.jar /var/lib/go-server/plugins/external/
 
   # Lower the polling interval - WAY too low for a real server, don't do this!
+  /bin/echo "Lowering polling interval - remove this for production server"
   /bin/bash /vagrant/update_go-server.sh
 
   # Replace the default config file with ours
   # /bin/bash /vagrant/update_config.sh
 
   # Start the server
+  /bin/echo "Starting GoCD Server and Agents"
   /etc/init.d/go-server start
 
   /etc/init.d/go-agent start
