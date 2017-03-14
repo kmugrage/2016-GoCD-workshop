@@ -6,3 +6,4 @@ scratch
 workshop-application
 workshop-security
 Vagrantfile
+*.DS_Store
