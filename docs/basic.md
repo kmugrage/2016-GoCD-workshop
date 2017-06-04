@@ -80,4 +80,4 @@ sample@ubuntu-xenial:~$
 
 6. Name the key `GoCD Workshop` - Note: It's important that you use this case sensitive name in order for our later Vagrant automation to work correctly.
 
-[Return to the GoCD Workshop setup](README.md)
+[Return to the GoCD Workshop setup](index.md)
